@@ -1,0 +1,1049 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECO SORT AI | Smart Waste Sorting</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg: #ffffff;
+    --text: #171717;
+    --gray: #737373;
+    --line: #e8e8e8;
+    --soft: #f5f6f3;
+    --green: #456b4d;
+    --green-dark: #304d37;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', 'Kanit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.container {
+    width: min(1150px, 92%);
+    margin: auto;
+}
+
+/* NAVBAR */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+}
+
+.navbar {
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.cart-button {
+    border: none;
+    background: var(--text);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.cart-button:hover {
+    background: var(--green);
+}
+
+/* HERO */
+
+.hero {
+    padding: 70px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.hero-text .label {
+    color: var(--green);
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 65px);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero p {
+    color: var(--gray);
+    line-height: 1.9;
+    font-size: 15px;
+    max-width: 480px;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--soft);
+}
+
+.hero-image img {
+    display: block;
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    transition: transform 0.6s;
+}
+
+.hero-image:hover img {
+    transform: scale(1.03);
+}
+
+.btn {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-dark {
+    background: var(--text);
+    color: white;
+}
+
+.btn-dark:hover {
+    background: var(--green);
+}
+
+.btn-outline {
+    border: 1px solid var(--text);
+    background: white;
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    background: var(--text);
+    color: white;
+}
+
+/* PRODUCT */
+
+.product-section {
+    padding: 70px 0;
+    border-top: 1px solid var(--line);
+}
+
+.section-label {
+    color: var(--gray);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 45px;
+}
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.product-image {
+    background: var(--soft);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    padding: 10px 0;
+}
+
+.product-category {
+    color: var(--green);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.product-info h2 {
+    font-size: 35px;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.product-description {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 28px;
+}
+
+.divider {
+    height: 1px;
+    background: var(--line);
+    margin: 25px 0;
+}
+
+.feature-list {
+    list-style: none;
+}
+
+.feature-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+}
+
+.feature-list li::before {
+    content: "✓";
+    color: var(--green);
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.quantity-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+}
+
+.quantity-control button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: white;
+    font-size: 18px;
+}
+
+.quantity-control span {
+    width: 35px;
+    text-align: center;
+}
+
+.buy-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.buy-buttons button {
+    flex: 1;
+}
+
+/* HOW IT WORKS */
+
+.how-section {
+    background: var(--soft);
+    padding: 75px 0;
+}
+
+.how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.how-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.how-number {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: 20px;
+}
+
+.how-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.how-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.8;
+}
+
+/* ABOUT */
+
+.about {
+    padding: 75px 0;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.about p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--gray);
+    line-height: 2;
+    font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+    background: #171717;
+    color: white;
+    padding: 35px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-content p {
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* MODAL */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 28px;
+    animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.close-btn {
+    border: none;
+    background: none;
+    font-size: 25px;
+}
+
+.cart-product {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-product img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.cart-product-info {
+    flex: 1;
+}
+
+.cart-product-info h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.cart-product-info p {
+    color: var(--gray);
+    font-size: 13px;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    font-weight: 600;
+}
+
+.form {
+    display: grid;
+    gap: 15px;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    font-family: inherit;
+    outline: none;
+}
+
+.form input:focus,
+.form textarea:focus {
+    border-color: var(--green);
+}
+
+.demo-notice {
+    padding: 13px;
+    background: var(--soft);
+    color: var(--gray);
+    font-size: 12px;
+    line-height: 1.7;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.success {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.success-icon {
+    font-size: 45px;
+    color: var(--green);
+}
+
+.success h2 {
+    margin: 15px 0;
+}
+
+.success p {
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+@media(max-width: 800px) {
+    .hero,
+    .product-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        gap: 30px;
+        padding: 45px 0;
+    }
+
+    .hero-image img {
+        height: 320px;
+    }
+
+    .product-image img {
+        height: 350px;
+    }
+
+    .how-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+@media(max-width: 500px) {
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .product-info h2 {
+        font-size: 28px;
+    }
+
+    .buy-buttons {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="container navbar">
+        <div class="logo">ECO SORT<span>.</span></div>
+
+        <nav class="nav-links">
+            <a href="#home">หน้าแรก</a>
+            <a href="#product">สินค้า</a>
+            <a href="#how">วิธีการทำงาน</a>
+            <a href="#about">เกี่ยวกับเรา</a>
+        </nav>
+
+        <button class="cart-button" onclick="openCart()">
+            🛒 ตะกร้า (<span id="cartCount">0</span>)
+        </button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="container hero" id="home">
+
+    <div class="hero-text">
+        <div class="label">SMART ECOLOGY · SMART LIVING</div>
+
+        <h1>
+            เปลี่ยนการทิ้งขยะ<br>
+            ให้เป็นเรื่อง <span>ง่าย</span>
+        </h1>
+
+        <p>
+            ECO SORT AI ถังขยะอัจฉริยะที่นำเทคโนโลยี AI
+            มาช่วยจำแนกขยะ พร้อมดีไซน์ทันสมัย
+            เพื่อสร้างบ้านที่สะอาดและเป็นมิตรกับสิ่งแวดล้อม
+        </p>
+
+        <a href="#product">
+            <button class="btn btn-dark">ดูรายละเอียดสินค้า →</button>
+        </a>
+    </div>
+
+    <div class="hero-image">
+        <img src="eco_sort_bin.jpg" alt="ECO SORT AI">
+    </div>
+
+</section>
+
+<!-- PRODUCT -->
+<section class="product-section container" id="product">
+
+    <div class="section-label">OUR PRODUCT</div>
+    <h2 class="section-title">ผลิตภัณฑ์ของเรา</h2>
+
+    <div class="product-layout">
+
+        <div class="product-image">
+            <img src="eco_sort_bin.jpg" alt="ถังขยะ ECO SORT AI">
+        </div>
+
+        <div class="product-info">
+
+            <div class="product-category">SMART ECO PRODUCT</div>
+
+            <h2>ECO SORT AI</h2>
+
+            <div class="product-price">฿3,490</div>
+
+            <p class="product-description">
+                ถังขยะอัจฉริยะที่ออกแบบมาเพื่อช่วยให้การคัดแยกขยะ
+                เป็นเรื่องสะดวกยิ่งขึ้น ด้วยแนวคิดการใช้ AI
+                ในการจำแนกประเภทขยะ พร้อมรูปลักษณ์มินิมอล
+                ที่เหมาะกับบ้านยุคใหม่
+            </p>
+
+            <div class="divider"></div>
+
+            <h3 style="font-size:16px;margin-bottom:10px;">
+                คุณสมบัติสินค้า
+            </h3>
+
+            <ul class="feature-list">
+                <li>ระบบ AI ช่วยจำแนกประเภทขยะ</li>
+                <li>รองรับแนวคิดแยกขยะรีไซเคิลและขยะอินทรีย์</li>
+                <li>หน้าจอแสดงผลอัจฉริยะ</li>
+                <li>ดีไซน์มินิมอล สีขาวสะอาด</li>
+                <li>เหมาะสำหรับบ้าน โรงเรียน และสำนักงาน</li>
+            </ul>
+
+            <div class="quantity-box">
+                <span>จำนวน</span>
+
+                <div class="quantity-control">
+                    <button onclick="changeQuantity(-1)">−</button>
+                    <span id="quantity">1</span>
+                    <button onclick="changeQuantity(1)">+</button>
+                </div>
+            </div>
+
+            <div class="buy-buttons">
+                <button class="btn btn-dark" onclick="addToCart()">
+                    เพิ่มลงตะกร้า
+                </button>
+
+                <button class="btn btn-outline" onclick="buyNow()">
+                    สั่งซื้อสินค้า
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+    <div class="container">
+
+        <div class="section-label">HOW IT WORKS</div>
+        <h2 class="section-title">แนวคิดการทำงาน</h2>
+
+        <div class="how-grid">
+
+            <div class="how-card">
+                <div class="how-number">01</div>
+                <h3>ตรวจจับขยะ</h3>
+                <p>
+                    ผู้ใช้ทิ้งขยะลงในบริเวณช่องตรวจจับ
+                    ระบบแนวคิด AI จะตรวจสอบลักษณะของขยะ
+                </p>
+            </div>
+
+            <div class="how-card">
+                <div class="how-number">02</div>
+                <h3>วิเคราะห์ประเภท</h3>
+                <p>
+                    ระบบประมวลผลเพื่อจำแนกประเภทขยะ
+                    เช่น ขยะรีไซเคิลหรือขยะอินทรีย์
+                </p>
+            </div>
+
+            <div class="how-card">
+                <div class="how-number">03</div>
+                <h3>แนะนำการแยกขยะ</h3>
+                <p>
+                    แสดงผลประเภทขยะที่ตรวจพบ
+                    เพื่อช่วยให้ผู้ใช้สามารถจัดการขยะได้เหมาะสม
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about container" id="about">
+
+    <div class="section-label">ABOUT ECO SORT</div>
+
+    <h2>เทคโนโลยีเพื่อโลกที่สะอาดขึ้น</h2>
+
+    <p>
+        ECO SORT AI เป็นแนวคิดผลิตภัณฑ์ที่นำเทคโนโลยีมาประยุกต์ใช้
+        กับการจัดการขยะในชีวิตประจำวัน
+        โดยมีเป้าหมายเพื่อส่งเสริมการคัดแยกขยะ
+        ลดการทิ้งขยะผิดประเภท และสนับสนุนการรีไซเคิล
+        เพื่อสร้างสิ่งแวดล้อมที่ดีขึ้นในอนาคต
+    </p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-content">
+
+        <div>
+            <div class="logo">ECO SORT<span>.</span></div>
+            <p>Smart technology for a cleaner world.</p>
+        </div>
+
+        <div>
+            <p>Student Project · 2026</p>
+            <p>เว็บไซต์จำลองการสั่งซื้อสินค้า</p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- CART MODAL -->
+<div class="modal-overlay" id="cartModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+            <h2>ตะกร้าสินค้า</h2>
+            <button class="close-btn" onclick="closeCart()">×</button>
+        </div>
+
+        <div id="cartContent"></div>
+
+    </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+            <h2>สั่งซื้อสินค้า</h2>
+            <button class="close-btn" onclick="closeCheckout()">×</button>
+        </div>
+
+        <div id="checkoutContent">
+
+            <div class="demo-notice">
+                ⚠️ เว็บไซต์นี้เป็นระบบสั่งซื้อจำลองสำหรับโครงงาน
+                ไม่มีการชำระเงินจริง และไม่มีการส่งสินค้า
+            </div>
+
+            <form class="form" onsubmit="submitOrder(event)">
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="ชื่อผู้สั่งซื้อ"
+                    required
+                >
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="เบอร์โทรศัพท์"
+                    required
+                >
+
+                <textarea
+                    id="customerAddress"
+                    placeholder="ที่อยู่จัดส่ง"
+                    rows="3"
+                    required
+                ></textarea>
+
+                <div class="cart-total">
+                    <span>ยอดรวม</span>
+                    <span id="checkoutTotal">฿0</span>
+                </div>
+
+                <button class="btn btn-dark" type="submit">
+                    ยืนยันคำสั่งซื้อจำลอง
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+// PRODUCT
+const PRODUCT = {
+    name: "ECO SORT AI",
+    price: 3490,
+    image: "eco_sort_bin.jpg"
+};
+
+let quantity = 1;
+let cartQuantity = 0;
+
+// FORMAT PRICE
+function money(number) {
+    return "฿" + number.toLocaleString("th-TH");
+}
+
+// CHANGE QUANTITY
+function changeQuantity(amount) {
+    quantity += amount;
+
+    if (quantity < 1) {
+        quantity = 1;
+    }
+
+    document.getElementById("quantity").textContent = quantity;
+}
+
+// ADD TO CART
+function addToCart() {
+    cartQuantity += quantity;
+
+    updateCart();
+
+    alert("เพิ่ม ECO SORT AI ลงในตะกร้าแล้ว");
+}
+
+// UPDATE CART
+function updateCart() {
+    document.getElementById("cartCount").textContent = cartQuantity;
+}
+
+// OPEN CART
+function openCart() {
+    const cartContent = document.getElementById("cartContent");
+
+    if (cartQuantity <= 0) {
+
+        cartContent.innerHTML = `
+            <div style="text-align:center;padding:30px;color:#777">
+                <p>ยังไม่มีสินค้าในตะกร้า</p>
+                <br>
+                <button class="btn btn-dark" onclick="closeCart()">
+                    เลือกสินค้า
+                </button>
+            </div>
+        `;
+
+    } else {
+
+        const total = PRODUCT.price * cartQuantity;
+
+        cartContent.innerHTML = `
+            <div class="cart-product">
+
+                <img src="${PRODUCT.image}" alt="ECO SORT AI">
+
+                <div class="cart-product-info">
+                    <h3>${PRODUCT.name}</h3>
+                    <p>${money(PRODUCT.price)} × ${cartQuantity}</p>
+                </div>
+
+            </div>
+
+            <div class="cart-total">
+                <span>ยอดรวม</span>
+                <span>${money(total)}</span>
+            </div>
+
+            <button class="btn btn-dark" style="width:100%"
+                onclick="goCheckout()">
+                ดำเนินการสั่งซื้อ
+            </button>
+
+            <button class="btn btn-outline" style="width:100%;margin-top:10px"
+                onclick="clearCart()">
+                ล้างตะกร้า
+            </button>
+        `;
+    }
+
+    document.getElementById("cartModal").classList.add("active");
+}
+
+// CLOSE CART
+function closeCart() {
+    document.getElementById("cartModal").classList.remove("active");
+}
+
+// CLEAR CART
+function clearCart() {
+    cartQuantity = 0;
+    updateCart();
+    closeCart();
+}
+
+// BUY NOW
+function buyNow() {
+    cartQuantity = quantity;
+    updateCart();
+    openCheckout();
+}
+
+// GO CHECKOUT
+function goCheckout() {
+    closeCart();
+    openCheckout();
+}
+
+// OPEN CHECKOUT
+function openCheckout() {
+    if (cartQuantity <= 0) {
+        alert("กรุณาเลือกสินค้าก่อน");
+        return;
+    }
+
+    const total = PRODUCT.price * cartQuantity;
+
+    document.getElementById("checkoutTotal").textContent =
+        money(total);
+
+    document.getElementById("checkoutModal").classList.add("active");
+}
+
+// CLOSE CHECKOUT
+function closeCheckout() {
+    document.getElementById("checkoutModal").classList.remove("active");
+}
+
+// SUBMIT ORDER
+function submitOrder(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("customerName").value;
+    const total = PRODUCT.price * cartQuantity;
+
+    const orderNumber =
+        "ECO" + Math.floor(100000 + Math.random() * 900000);
+
+    document.getElementById("checkoutContent").innerHTML = `
+        <div class="success">
+
+            <div class="success-icon">✓</div>
+
+            <h2>สั่งซื้อสำเร็จ!</h2>
+
+            <p>
+                ขอบคุณคุณ ${name}<br><br>
+
+                หมายเลขคำสั่งซื้อ:<br>
+                <strong>${orderNumber}</strong><br><br>
+
+                สินค้า: ${PRODUCT.name}<br>
+                จำนวน: ${cartQuantity} ชิ้น<br>
+                ยอดรวม: <strong>${money(total)}</strong>
+            </p>
+
+            <div class="demo-notice">
+                นี่เป็นการสั่งซื้อจำลองสำหรับโครงงาน
+                ไม่มีการชำระเงินจริง
+            </div>
+
+            <button class="btn btn-dark"
+                onclick="finishOrder()">
+                กลับหน้าหลัก
+            </button>
+
+        </div>
+    `;
+}
+
+// FINISH
+function finishOrder() {
+    cartQuantity = 0;
+    quantity = 1;
+
+    updateCart();
+
+    document.getElementById("quantity").textContent = 1;
+
+    closeCheckout();
+
+    location.reload();
+}
+
+// CLOSE MODAL WHEN CLICK OUTSIDE
+document.querySelectorAll(".modal-overlay").forEach(modal => {
+    modal.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.classList.remove("active");
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
